@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple CMS: <%= @page_title || "Admin Area" %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <ul class="nav nav-pills nav-justified">
+      <li role="presentation" class="<%= active_class('access') %>"><%= link_to("Home", admin_path) %></li>
+      <li role="presentation" class="<%= active_class('admin_users') %>"><%= link_to("Admin Users", admin_users_path) %></li>
+      <li role="presentation" class="<%= active_class('subjects') %>"><%= link_to("Subjects", subjects_path) %></li>
+      <li role="presentation" class="<%= active_class('pages') %>"><%= link_to("Pages", pages_path) %></li>
+      <li role="presentation" class="<%= active_class('sections') %>"><%= link_to("Sections", sections_path) %></li>
+      <!-- <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li> -->
+      <% if session[:user_id] %>
+        <!-- <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= session[:user_id] %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+          </ul>
+        </li> -->
+        <li role="presentation"><%= link_to("Logout", access_logout_path) %></li>
+      <% else %>
+        <!-- <li role="presentation"><%= link_to("Login", access_login_path) %></li> -->
+      <% end %>
+    </ul>
+    <%= yield %>
+  </body>
+</html>

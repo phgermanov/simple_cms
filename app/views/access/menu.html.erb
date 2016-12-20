@@ -1,0 +1,39 @@
+<div class="jumbotron pages info">
+
+  <% if !flash[:notice].blank?%>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice]%>
+    </div>
+  <% end %>
+  <h2>Home screen</h2>
+  <table class="table" summary="section detail view">
+    <tr>
+      <th>Username</th>
+      <td><%= @admin_user.username %></td>
+    </tr>
+    <tr>
+    <tr>
+      <th>First Name</th>
+      <td><%= @admin_user.first_name %></td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td><%= @admin_user.last_name %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @admin_user.email %></td>
+    </tr>
+      <th>Created</th>
+      <td>
+        <%= @admin_user.created_at.to_formatted_s(:long) %>
+      </td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td>
+        <%= @admin_user.updated_at.to_formatted_s(:long) %>
+      </td>
+    </tr>
+  </table>
+</div>

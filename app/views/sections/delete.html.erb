@@ -1,0 +1,16 @@
+<div class="jumbotron sections delete">
+<%= link_to("<< Back to List", sections_path, :class => 'back-link btn btn-primary') %>
+
+  <h2>Delete Section</h2>
+
+  <%= form_for(@section, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to delete this section?</p>
+    <p class="reference-name"><%= f.object.name%></p>
+
+    <div class="form-buttons">
+      <%= f.submit('Delete Section', :class => 'btn btn-primary')%>
+    </div>
+
+  <% end %>
+</div>

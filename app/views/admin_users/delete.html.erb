@@ -1,0 +1,16 @@
+<div class="jumbotron admin_users delete">
+<%= link_to("<< Back to List", admin_users_path, :class => 'back-link btn btn-primary') %>
+
+  <h2>Delete Admin User</h2>
+
+  <%= form_for(@admin_user, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to delete this admin user?</p>
+    <p class="reference-name"><%= f.object.name%></p>
+
+    <div class="form-buttons">
+      <%= f.submit('Delete Admin User', :class => 'btn btn-primary')%>
+    </div>
+
+  <% end %>
+</div>

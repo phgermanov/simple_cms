@@ -1,0 +1,38 @@
+<div class="jumbotron pages info">
+
+  <% if !flash[:notice].blank?%>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice]%>
+    </div>
+  <% end %>
+  <h2>Pages</h2>
+  <table class="table listing" summary="Page List">
+    <tr class="header">
+      <th>#</th>
+      <th>Pages</th>
+      <th>Subject ID</th>
+      <th>Visible</th>
+      <th>Permalink</th>
+      <th>Sections </th>
+      <th>Actions</th>
+    </tr>
+
+    <% @pages.each do |page| %>
+    <tr>
+      <td><%= page.position %></td>
+      <td><%= page.name %></td>
+      <td><%= page.subject_id %></td>
+      <td class="center"><%= status_tag(page.visible) %></td>
+      <td class="center"><%= page.permalink %></td>
+      <td><%= page.sections.size %></td>
+      <td class="actions">
+        <%= link_to("", page_path(page), :class => 'action show btn btn-default glyphicon glyphicon-folder-open') %>
+        <%= link_to("", edit_page_path(page), :class => 'action edit btn btn-default glyphicon glyphicon-edit') %>
+        <%= link_to("", delete_page_path(page), :class => 'action delete btn btn-default glyphicon glyphicon-remove') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+  <%= link_to("Add new Page", new_page_path, :class => 'action new btn btn-default') %>
+</div>

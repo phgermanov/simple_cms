@@ -1,0 +1,15 @@
+<div class="jumbotron pages edit">
+<%= link_to("<< Back to List", sections_path, :class => 'back-link btn btn-primary') %>
+  <h2>Update Section</h2>
+
+  <%= form_for(@section) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= f.submit("Update Section", :class => 'btn btn-primary') %>
+    </div>
+
+  <% end %>
+
+</div>

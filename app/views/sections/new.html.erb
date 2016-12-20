@@ -1,0 +1,16 @@
+<div class="jumbotron sections new">
+<%= link_to("<< Back to List", sections_path, :class => 'back-link btn btn-primary') %>
+
+  <h2>Create Section</h2>
+
+  <%= form_for(@section) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= f.submit("Create Section", :class => 'btn btn-primary') %>
+    </div>
+
+  <% end %>
+
+</div>

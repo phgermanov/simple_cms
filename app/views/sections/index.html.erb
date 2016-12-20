@@ -1,0 +1,36 @@
+<div class="jumbotron sections info">
+
+  <% if !flash[:notice].blank?%>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice]%>
+    </div>
+  <% end %>
+  <h2>Sections</h2>
+  <table class="table listing" summary="Section List">
+    <tr class="header">
+      <th>#</th>
+      <th>Sections</th>
+      <th>Page ID</th>
+      <th>Visible</th>
+      <th>Content type</th>
+      <th>Actions</th>
+    </tr>
+
+    <% @sections.each do |section| %>
+    <tr>
+      <td><%= section.position %></td>
+      <td><%= section.name %></td>
+      <td><%= section.page_id %></td>
+      <td class="center"><%= status_tag(section.visible) %></td>
+      <td class="center"><%= section.content_type %></td>
+      <td class="actions">
+        <%= link_to("", section_path(section), :class => 'action show btn btn-default glyphicon glyphicon-folder-open') %>
+        <%= link_to("", edit_section_path(section), :class => 'action edit btn btn-default glyphicon glyphicon-edit') %>
+        <%= link_to("", delete_section_path(section), :class => 'action delete btn btn-default glyphicon glyphicon-remove') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+  <%= link_to("Add new Section", new_section_path, :class => 'action new btn btn-default') %>
+</div>

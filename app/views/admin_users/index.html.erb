@@ -1,0 +1,36 @@
+<div class="jumbotron admin_users info">
+
+  <% if !flash[:notice].blank?%>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice]%>
+    </div>
+  <% end %>
+  <h2>Admin Users</h2>
+  <table class="table listing" summary="Page List">
+    <tr class="header">
+      <th>#</th>
+      <th>Name</th>
+      <th>Username </th>
+      <th>Email</th>
+      <th>Created</th>
+      <th>Actions</th>
+    </tr>
+
+    <% @admin_users.each do |admin_user| %>
+    <tr>
+      <td><%= admin_user.id %></td>
+      <td><%= admin_user.name %></td>
+      <td><%= admin_user.username %></td>
+      <td><%= admin_user.email %></td>
+      <td><%= admin_user.created_at.to_formatted_s(:short) %></td>
+      <td class="actions">
+        <!-- <%= link_to("", admin_user_path(admin_user), :class => 'action show btn btn-default glyphicon glyphicon-folder-open') %> -->
+        <%= link_to("", edit_admin_user_path(admin_user), :class => 'action edit btn btn-default glyphicon glyphicon-edit') %>
+        <%= link_to("", delete_admin_user_path(admin_user), :class => 'action delete btn btn-default glyphicon glyphicon-remove') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+  <%= link_to("Add new Admin User", new_admin_user_path, :class => 'action new btn btn-default') %>
+</div>

@@ -1,0 +1,16 @@
+<div class="jumbotron admin_users new">
+<%= link_to("<< Back to List", admin_users_path, :class => 'back-link btn btn-primary') %>
+
+  <h2>Create Admin User</h2>
+
+  <%= form_for(@admin_user) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= f.submit("Create Admin User", :class => 'btn btn-primary') %>
+    </div>
+
+  <% end %>
+
+</div>
